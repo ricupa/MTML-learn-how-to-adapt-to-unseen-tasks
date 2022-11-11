@@ -1,0 +1,12 @@
+### conda activate MTLenv 
+#### python main_meta_test.py --config_exp exp_configs/meta_testing.yaml
+
+### SETUP
+
+# EXPERIMENT DETAILS
+'Experiment_name_meta_test': '7_2_multi_add_edge_seg_depth_surface_trial_1_less_data_50'  
+'add_new_task_list': ['edge_texture'] ###,'segmentsemantic', 'depth_euclidean','class_scene', 'class_object','surface_normal', 'edge_texture'
+'meta_train_folder_name': "/proj/ltu_mtl/users/x_ricup/results/Taskonomy/7_2_multi_seg_depth_surface_trial_1/"
+'gradual_fine_tuning': False
+'train_added_task_head_only': True ### not using this flag
+'percent_data_for_training': 50   # enter in percentage

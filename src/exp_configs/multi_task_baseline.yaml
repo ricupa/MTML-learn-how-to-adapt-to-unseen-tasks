@@ -1,0 +1,86 @@
+# conda activate MTLenv
+# python main.py --config_exp exp_configs/multi_task_baseline.yaml
+
+
+
+# SETUP
+'setup': 'multi_task'   
+'backbone_model': 'resnet50' ### efficientnetb7, resnet50
+'pretrained': True    # false if  train from scratch
+'finetuning': False    # finetune from epoch 1 , unfreeze all weights , true if  train from scratch
+'finetuning_after': 15  # number of epochs after which the finetuning of the backbone starts
+# DATABASE
+'dataset_name': 'Taskonomy'  ### 'NYU', 'Taskonomy'
+# EXPERIMENT DETAILS
+'Experiment_name': '10_1_meta_multi_depth_surface_edge_trial_3'
+'task_list': ['depth_euclidean','surface_normal','edge_texture'] 
+'checkpoint': False
+'checkpoint_folder': "../runs/NYU/8_2_meta_multi_seg_depth_surface_trial_2/"
+
+
+### 1. class_object
+### 2. class_scene
+### 3. segmentsemantic
+### 4. depth_euclidean
+### 5. surface_normal
+### 6. edge_texture
+
+# COMBINE LOSSES
+'comb_loss' : 'uncertainity'   # 'uncertainity', 'sum', 'gradnorm'
+
+#TRAIN WITH MISSING LABELS FOR META LEARNING
+'missing_labels': False
+'percent_missing_labels': 1 # write 10, 20, 50 %
+
+# SEGMENTATION PARAMS
+'mode': 'multiclass'  ## 'multiclass', binary
+'threshold' : 0.2  ## for binary
+
+# BATCH SPECS
+'train_batch_size' : 100
+'val_batch_size' : 100
+'test_batch_size' : 100
+
+
+# HYPERPARAMETERS
+'epochs' : 500
+'best_total_loss': 0.0003
+'num_workers': 2
+'model': 'baseline'
+'earlystop_patience': 50
+'task_earlystop_patience': 35  # for individual tasks
+
+'loss_weights' : 
+    'class_scene': 1   # of no use now 
+    'class_object': 1   # of no use now
+
+
+# OPTIMIZER PARAMETERS
+'optimizer': 'adamw'
+'optimizer_params': 
+    'learning_rate': 0.0003
+    'betas': [0.9, 0.999]
+    'weight_decay' : 0.01
+
+# SCHEDULER PARAMETERS
+'scheduler': 'reduce_on_plateau'
+'scheduler_params': 
+    'lr_decay_epochs': 50
+    'lr_decay_factor': 0.3
+    'patience': 50
+
+'eval_every_10th_epoch': False
+
+#PROFILER
+'profiler':
+    'wait': 2
+    'warmup': 2
+    'active': 5
+    'repeat': 2
+
+#META HYPERPARAMETERS
+'meta':
+    'learning_rate': 0.0001
+    'betas': [0.9, 0.999]
+    'weight_decay' : 0.0001
+    'optimizer': 'adamw'
