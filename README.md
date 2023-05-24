@@ -1,5 +1,5 @@
 # Multi-task-meta-transfer-learning
-This repository is the original implementation of the article "Multi-Task Meta Learning: learn how to adapt to unseen tasks" that can be found [here]{https://arxiv.org/pdf/2210.06989.pdf}
+This repository is the original implementation of the article "Multi-Task Meta Learning: learn how to adapt to unseen tasks" that can be found [here](https://arxiv.org/pdf/2210.06989.pdf)
 ## Introduction
 This work aims to integrate two learning paradigms Multi-Task Learning (MTL) and meta learning, to bring together the best of both the worlds, i.e., simultaneous learning of multiple tasks, an element of MTL, and promptly adapting to new tasks, quality of meta learning. We propose Multi-task Meta Learning (MTML), an approach to enhance MTL compared to single task learning by employing meta learning. The fundamental idea of this work is to train a multi-task model, such that when an unseen task is introduced, it learns in lesser steps and gives better performance than conventional single task learning or MTL. By conducting various experiments, we demonstrate this approach on two datasets, NYU-v2, and the taskonomy dataset, on four tasks: semantic segmentation, depth  estimation, surface normal estimation and edge detection.
 
